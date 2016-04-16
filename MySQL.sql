@@ -27,11 +27,12 @@ SELECT
 	 SUM( `rs_1`.`capitalizacion`+`rs_2`.`capitalizacion`) AS CapitalizacionTotal,
 	 ((SUM( `rs_1`.`capitalizacion`+`rs_2`.`capitalizacion`))/(SUM( `rs_1`.`ventabruta`+`rs_2`.`ventabruta`))*100) AS VB,
 	 ((SUM( `rs_1`.`capitalizacion`+`rs_2`.`capitalizacion`))/(SUM( `rs_1`.`ingreso`+`rs_2`.`ingreso`))*100) AS VING
-FROM `registrosaldos` AS rs_1
+FROM `registrosaldos` AS `rs_1`
 INNER JOIN `registrosaldos` AS `rs_2` ON ( `rs_2`.`fecha` = `rs_1`.`fecha`)
 WHERE
 	`rs_1`.`vendedor`='9' AND `rs_1`.`mes`='4' AND `rs_1`.`anio`='2016' AND `rs_1`.`tipo`='0'
 AND
 	`rs_2`.`vendedor`='9' AND `rs_2`.`mes`='4' AND `rs_2`.`anio`='2016' AND `rs_2`.`tipo`='1'
 GROUP BY `rs_1`.`fecha`, `rs_2`.`fecha`
+
 
