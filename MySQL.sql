@@ -36,3 +36,12 @@ AND
 GROUP BY `rs_1`.`fecha`, `rs_2`.`fecha`
 
 
+-- ------------------------------------------------
+-- Inner Join senara
+-- ------------------------------------------------
+SELECT
+`zona`.`id`, `zona`.`nombre`,
+COUNT( `estaciones`.id) AS NumeroDeEstaciones
+FROM `zona`
+LEFT JOIN `estaciones` ON (`estaciones`.`id_zona` = `zona`.`id`)
+WHERE `zona`.`habilitada` ='1' GROUP BY `zona`.`id`
