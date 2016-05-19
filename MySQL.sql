@@ -35,7 +35,6 @@ AND
 	`rs_2`.`vendedor`='9' AND `rs_2`.`mes`='4' AND `rs_2`.`anio`='2016' AND `rs_2`.`tipo`='1'
 GROUP BY `rs_1`.`fecha`, `rs_2`.`fecha`
 
-
 -- ------------------------------------------------
 -- Inner Join senara
 -- ------------------------------------------------
@@ -45,3 +44,11 @@ COUNT( `estaciones`.id) AS NumeroDeEstaciones
 FROM `zona`
 LEFT JOIN `estaciones` ON (`estaciones`.`id_zona` = `zona`.`id`)
 WHERE `zona`.`habilitada` ='1' GROUP BY `zona`.`id`
+
+
+-- ------------------------------------------------
+-- Permisos acceso remoto
+-- -----------------------------------------------
+
+GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'password';
+FLUSH PRIVILEGES;
